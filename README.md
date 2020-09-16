@@ -2,7 +2,7 @@
 Extract saved passwords of the browsers (i.e Chrome, Firefox, Opera) in the form of .db files and transfer em to the attacker via sockets
 
 ## How it works
-[!alt text](https://media.discordapp.net/attachments/733792205663371286/755806305016610842/image.png)
+![alt text](https://media.discordapp.net/attachments/733792205663371286/755806305016610842/image.png)
 
 Basically when u send the file to the victim's computer it processes the system information (OS name) and then it searches for the path to the saved credentials of the browser (look into the code for more info) after that it extracts the data in a .db format and sends it to the attacker via TCP.
 
