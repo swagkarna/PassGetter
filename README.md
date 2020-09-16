@@ -1,5 +1,5 @@
 # PassGetter
-Extract saved passwords of the browsers (i.e Chrome, Firefox, Opera) in the form of .db files and transfer em to the attacker via sockets
+Extract saved passwords of the browsers (i.e Chrome, Firefox, Opera) in the form of .db files and transfer them to the attacker via sockets
 
 ## How it works
 ![alt text](https://media.discordapp.net/attachments/733792205663371286/755806305016610842/image.png)
