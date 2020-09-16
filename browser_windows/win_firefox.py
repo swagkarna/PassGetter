@@ -1,8 +1,6 @@
-import argparse
-import csv
+import configparser
 import ctypes as ct
 import json
-import logging
 import os
 import select
 import sqlite3
@@ -217,23 +215,6 @@ def obtain_credentials(profile):
     credentials = JsonCredentials(profile)
     return credentials
 
-def load_profile(profile):
-
-        profile = profile.encode(LIB_ENCODING)
-
-        e = NSS._NSS_Init(b"sql:" + profile)
-
-        if e != 0:
-            NSS.handle_error()
-
-def unload_profile():
-        """Shutdown NSS and deactivate current profile
-        """
-        e = NSS._NSS_Shutdown()
-
-        if e != 0:
-            NSS.handle_error()
-
 def read_config(filename):
 
     if os.path.isfile(filename):
@@ -253,6 +234,21 @@ def read_config(filename):
         sys.exit("Exiting.")
 
         return False
+
+def load_profile(profile):
+
+        profile = profile.encode(LIB_ENCODING)
+
+        e = NSS._NSS_Init(b"sql:" + profile)
+
+        if e != 0:
+            NSS.handle_error()
+
+def unload_profile():
+        e = NSS._NSS_Shutdown()
+
+        if e != 0:
+            NSS.handle_error()
 
 def decrypt_passwords():
 
@@ -281,7 +277,4 @@ def decrypt_passwords():
 
     unload_profile()
 
-if __name__ == "__main__":
-
-    NSS = NSSDecoder()
-    decrypt_passwords()
+read_config(os.getenv('APPDATA') + "/../Roaming/Mozilla/Firefox/profiles.ini")
