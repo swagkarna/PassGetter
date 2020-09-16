@@ -17,6 +17,7 @@ LIB_ENCODING = "utf8"
 
 USR_ENCODING = sys.stdin.encoding or sys.stdout.encoding or "utf8"
 
+CONFIG = {}
 
 def win_decode(_bytes, encoding=USR_ENCODING):
         return _bytes
@@ -233,9 +234,29 @@ def unload_profile():
         if e != 0:
             NSS.handle_error()
 
+def read_config(filename):
+
+    if os.path.isfile(filename):
+            
+        config = configparser.ConfigParser()
+        config.read(filename)
+
+        CONFIG["global"] = {
+            "profile0": config.get("Profile0", "Path").replace("/", "\\"),
+            "profile1": config.get("Profile1", "Path").replace("/", "\\")
+        }
+
+        return True
+
+    else:
+        print("Configuration file " + filename + " not found!")
+        sys.exit("Exiting.")
+
+        return False
+
 def decrypt_passwords():
 
-    profile = os.getenv('APPDATA') + "/../Roaming/Mozilla/Firefox/Profiles/bqua3kuu.default-release/"
+    profile = os.getenv('APPDATA') + "\\Mozilla\\Firefox\\" + CONFIG["global"]["profile0"]
 
     load_profile(profile)
 
