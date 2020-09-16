@@ -31,5 +31,5 @@ pip install -r requirements.txt
 
 ## Credits
 <ul>
-<li>[!Firefox Pass Extraction - unode] (https://github.com/unode/firefox_decrypt/blob/master/firefox_decrypt.py)</li>
-<li>[!Chrome Pass Extraction - Stackoverflow] (https://stackoverflow.com/questions/61099492/chrome-80-password-file-decryption-in-python)</li>
+<li>Firefox Pass Extraction - unode (https://github.com/unode/firefox_decrypt/blob/master/firefox_decrypt.py)</li>
+<li>Chrome Pass Extraction - Stackoverflow (https://stackoverflow.com/questions/61099492/chrome-80-password-file-decryption-in-python)</li>
